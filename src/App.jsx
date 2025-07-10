@@ -5,20 +5,20 @@ const fashionProducts = [
   {
     name: 'Revolution Hoodie',
     price: '13.742.000₫',
-    image: 'https://fearofgod.com/cdn/shop/files/FOG8_LOOK_01_1_720x.jpg',
+    image: './assets/QP.jpg',
     brand: 'FEAR OF GOD',
   },
   {
     name: 'Straight Revolution Jean',
     price: '23.874.000₫',
-    image: 'https://fearofgod.com/cdn/shop/files/FOG8_LOOK_02_1_720x.jpg',
+    image: 'https://picsum.photos/200/300',
     brand: 'FEAR OF GOD',
     preorder: true,
   },
   {
     name: 'FU Snapback',
     price: '3.609.000₫',
-    image: 'https://fearofgod.com/cdn/shop/files/FOG8_LOOK_03_1_720x.jpg',
+    image: 'https://picsum.photos/200/300',
     brand: 'FEAR OF GOD',
   },
 ];
@@ -27,19 +27,19 @@ const beautyProducts = [
   {
     name: 'Dioriviera Eau de Parfum',
     price: '5.000.000₫',
-    image: 'https://www.dior.com/couture/var/dior/storage/images/horizon/fragrance/2024/6/27/dioriviera/38928217-1-eng-GB/dioriviera_16_9.jpg',
+    image: 'https://picsum.photos/200/300',
     brand: 'CHRISTIAN DIOR',
   },
   {
     name: 'Miss Dior Blooming Bouquet',
     price: '4.200.000₫',
-    image: 'https://www.dior.com/couture/var/dior/storage/images/horizon/fragrance/2024/6/27/missdior/38928219-1-eng-GB/missdior_16_9.jpg',
+    image: 'https://picsum.photos/200/300',
     brand: 'CHRISTIAN DIOR',
   },
   {
     name: 'Dior Addict Lip Glow',
     price: '1.200.000₫',
-    image: 'https://www.dior.com/couture/var/dior/storage/images/horizon/fragrance/2024/6/27/lipglow/38928221-1-eng-GB/lipglow_16_9.jpg',
+    image: 'https://picsum.photos/200/300',
     brand: 'CHRISTIAN DIOR',
   },
 ];
