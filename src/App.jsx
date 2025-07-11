@@ -1,24 +1,25 @@
 import { useState, useRef } from 'react';
 import './index.css';
+import Footer from './Footer';
 
 const fashionProducts = [
   {
     name: 'Revolution Hoodie',
     price: '13.742.000₫',
-    image: './assets/QP.jpg',
+    image: '//fearofgod.com/cdn/shop/files/192SP256480F_MERINO_SHORT_SLEEVE_TEE-HOMESTEAD_HEATHER_2_x800.jpg?v=1749617316',
     brand: 'FEAR OF GOD',
   },
   {
     name: 'Straight Revolution Jean',
     price: '23.874.000₫',
-    image: 'https://picsum.photos/200/300',
+    image: '//fearofgod.com/cdn/shop/files/192SP256480F_MERINO_SHORT_SLEEVE_TEE-HOMESTEAD_HEATHER_2_x800.jpg?v=1749617316',
     brand: 'FEAR OF GOD',
     preorder: true,
   },
   {
     name: 'FU Snapback',
     price: '3.609.000₫',
-    image: 'https://picsum.photos/200/300',
+    image: '//fearofgod.com/cdn/shop/files/192SP256480F_MERINO_SHORT_SLEEVE_TEE-HOMESTEAD_HEATHER_2_x800.jpg?v=1749617316',
     brand: 'FEAR OF GOD',
   },
 ];
@@ -27,19 +28,19 @@ const beautyProducts = [
   {
     name: 'Dioriviera Eau de Parfum',
     price: '5.000.000₫',
-    image: 'https://picsum.photos/200/300',
+    image: '//fearofgod.com/cdn/shop/files/192SP256480F_MERINO_SHORT_SLEEVE_TEE-HOMESTEAD_HEATHER_2_x800.jpg?v=1749617316',
     brand: 'CHRISTIAN DIOR',
   },
   {
     name: 'Miss Dior Blooming Bouquet',
     price: '4.200.000₫',
-    image: 'https://picsum.photos/200/300',
+    image: '//fearofgod.com/cdn/shop/files/192SP256480F_MERINO_SHORT_SLEEVE_TEE-HOMESTEAD_HEATHER_2_x800.jpg?v=1749617316',
     brand: 'CHRISTIAN DIOR',
   },
   {
     name: 'Dior Addict Lip Glow',
     price: '1.200.000₫',
-    image: 'https://picsum.photos/200/300',
+    image: '//fearofgod.com/cdn/shop/files/192SP256480F_MERINO_SHORT_SLEEVE_TEE-HOMESTEAD_HEATHER_2_x800.jpg?v=1749617316',
     brand: 'CHRISTIAN DIOR',
   },
 ];
@@ -78,8 +79,8 @@ function App() {
           <video
             ref={fashionVideoRef}
             className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"
-            src="https://www.w3schools.com/html/mov_bbb.mp4"
-            poster="https://www.dior.com/couture/var/dior/storage/images/horizon/homepage/2024/6/27/diormain/diormain-1/diormain-1_16_9/38928213-1-eng-GB/diormain-1_16_9.jpg"
+            src="https://diorama.dam-broadcast.com/pm_11872_1075_1075540-jor9fxk0yb-1080.mp4"
+            poster="https://diorama.dam-broadcast.com/cdn-cgi/image/width=3000,format=auto/pm_11872_1076_1076077-s4ksc180i9-whr.jpg"
             muted
             loop
             playsInline
@@ -98,8 +99,8 @@ function App() {
           <video
             ref={beautyVideoRef}
             className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500"
-            src="https://www.w3schools.com/html/movie.mp4"
-            poster="https://www.dior.com/couture/var/dior/storage/images/horizon/homepage/2024/6/27/diormain/diormain-2/diormain-2_16_9/38928215-1-eng-GB/diormain-2_16_9.jpg"
+            src="https://diorama.dam-broadcast.com/pm_11872_1111_1111938-vk8s39l20l-1080.mp4"
+            poster="https://diorama.dam-broadcast.com/cdn-cgi/image/width=3000,format=auto/pm_11872_1111_1111944-jout1mh812-whr.jpg"
             muted
             loop
             playsInline
@@ -156,6 +157,8 @@ function App() {
         </div>
       )}
       {content}
+      {/* Render the footer only on the hero screen */}
+      {view === 'hero' && <Footer />}
       {/* Loading Overlay */}
       {loading && (
         <div className="fixed inset-0 z-50 flex items-end">
