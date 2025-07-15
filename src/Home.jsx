@@ -1,12 +1,49 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 
 function Home() {
   const [animateOut, setAnimateOut] = useState(false);
+  const [meitBlack, setMeitBlack] = useState(false);
   const fashionVideoRef = useRef(null);
   const beautyVideoRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Listen for custom loading event
+    const handleStartLoading = () => {
+      setTimeout(() => {
+        setMeitBlack(true);
+      }, 200); // Turn black after 200ms (when loading screen starts)
+      setTimeout(() => {
+        setMeitBlack(false);
+      }, 1200); // Turn back to white after loading completes
+    };
+
+    window.addEventListener('startLoading', handleStartLoading);
+
+    return () => {
+      window.removeEventListener('startLoading', handleStartLoading);
+    };
+  }, []);
+
+  // Get loading state from the loading overlay
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const handleStartLoading = () => {
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1200);
+    };
+
+    window.addEventListener('startLoading', handleStartLoading);
+
+    return () => {
+      window.removeEventListener('startLoading', handleStartLoading);
+    };
+  }, []);
 
   // Handler for Shop Now buttons
   const handleShopNow = (target) => {
@@ -25,6 +62,17 @@ function Home() {
   return (
     <>
       <section className="relative flex flex-col md:flex-row h-screen min-h-[400px]">
+        {/* MeiT brand text - centered in banner */}
+        <div className={`absolute inset-0 z-[100] flex items-center justify-center pointer-events-none transition-all duration-500
+          ${isLoading ? 'scale-95' : 'scale-100'}
+        `}>
+          <span className={`font-bold drop-shadow-lg tracking-widest text-7xl md:text-8xl transition-all duration-500
+            ${meitBlack ? 'text-black' : 'text-white'}
+          `}>
+            MeiT
+          </span>
+        </div>
+        
         {/* Fashion & Accessories Banner */}
         <div className="flex-1 relative flex items-end justify-center overflow-hidden group bg-black">
           <video
