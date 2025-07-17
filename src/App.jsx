@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import './index.css';
 import Home from './Home';
 import Fashion from './Fashion';
-import Fragrance from './Fragrance';
+import HouseholdGoods from './HouseholdGoods';
+import ProductDetail from './ProductDetail';
 
 // Component for the loading overlay
 function LoadingOverlay() {
@@ -53,7 +54,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/fashion" element={<Fashion />} />
-          <Route path="/fragrance" element={<Fragrance />} />
+          <Route path="/household-goods" element={<HouseholdGoods />} />
+          <Route path="/fashion/:id" element={<ProductDetail />} />
+          <Route path="/household-goods/:id" element={<ProductDetail />} />
         </Routes>
         
         <style>{`

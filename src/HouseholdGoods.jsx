@@ -3,77 +3,77 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-// Generate 100 fashion products
-const generateFashionProducts = () => {
+// Generate 100 household products
+const generateHouseholdProducts = () => {
   const products = [];
-  const brands = ['FEAR OF GOD', 'ESSENTIALS', 'MEIT FASHION', 'LUXURY COLLECTION', 'STREET STYLE'];
-  const categories = ['Hoodie', 'T-Shirt', 'Jeans', 'Jacket', 'Sweater', 'Pants', 'Shirt', 'Dress', 'Skirt', 'Coat'];
-  const colors = ['Black', 'White', 'Gray', 'Navy', 'Brown', 'Beige', 'Olive', 'Burgundy'];
+  const brands = ['MEIT HOME', 'LUXURY KITCHEN', 'PREMIUM LIVING', 'SMART HOME', 'ECO FRIENDLY'];
+  const categories = ['Bộ nồi', 'Máy xay', 'Bộ bát đĩa', 'Tủ lạnh', 'Máy giặt', 'Lò vi sóng', 'Bình nước', 'Ghế sofa', 'Bàn ăn', 'Tủ quần áo'];
+  const materials = ['Inox cao cấp', 'Sứ cao cấp', 'Gỗ tự nhiên', 'Thép không gỉ', 'Nhựa cao cấp', 'Thủy tinh', 'Gốm sứ', 'Kim loại'];
   
-  // Fashion product images with different variations
-  const fashionImages = [
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=800&fit=crop'
+  // Household product images
+  const householdImages = [
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop'
   ];
   
   // Hover images (completely different images for better effect)
-  const fashionHoverImages = [
-    'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=800&fit=crop'
+  const householdHoverImages = [
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop'
   ];
   
   for (let i = 1; i <= 100; i++) {
     const brand = brands[Math.floor(Math.random() * brands.length)];
     const category = categories[Math.floor(Math.random() * categories.length)];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const price = Math.floor(Math.random() * 50000000) + 1000000; // 1M to 50M VND
+    const material = materials[Math.floor(Math.random() * materials.length)];
+    const price = Math.floor(Math.random() * 10000000) + 500000; // 500K to 10M VND
     
     // Select random images for this product
-    const imageIndex = Math.floor(Math.random() * fashionImages.length);
+    const imageIndex = Math.floor(Math.random() * householdImages.length);
     
     products.push({
       id: i,
-      name: `${category} ${color}`,
+      name: `${category} ${material}`,
       price: `${price.toLocaleString('vi-VN')}₫`,
-      image: fashionImages[imageIndex],
-      imageHover: fashionHoverImages[imageIndex],
+      image: householdImages[imageIndex],
+      imageHover: householdHoverImages[imageIndex],
       brand: brand,
-      preorder: Math.random() > 0.8, // 20% chance of preorder
+      preorder: Math.random() > 0.85, // 15% chance of preorder
     });
   }
   
   return products;
 };
 
-const fashionProducts = generateFashionProducts();
+const householdProducts = generateHouseholdProducts();
 
-function Fashion() {
+function HouseholdGoods() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const itemsPerPage = 20;
-  const totalPages = Math.ceil(fashionProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(householdProducts.length / itemsPerPage);
 
   // Calculate current products to display
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentProducts = fashionProducts.slice(startIndex, endIndex);
+  const currentProducts = householdProducts.slice(startIndex, endIndex);
 
   // Generate page numbers to display
   const getPageNumbers = () => {
@@ -119,7 +119,7 @@ function Fashion() {
             <div 
               key={product.id} 
               className="flex flex-col items-center bg-white p-6 transition cursor-pointer hover:bg-gray-50"
-              onClick={() => navigate(`/fashion/${product.id}`)}
+              onClick={() => navigate(`/household-goods/${product.id}`)}
             >
               <div 
                 className="w-full aspect-[3/4] bg-gray-100 flex items-center justify-center mb-4 overflow-hidden rounded relative group"
@@ -202,7 +202,7 @@ function Fashion() {
         
         {/* Page info */}
         <div className="text-center mt-4 text-gray-500 text-sm">
-          Page {currentPage} of {totalPages} • Showing {startIndex + 1}-{Math.min(endIndex, fashionProducts.length)} of {fashionProducts.length} products
+          Page {currentPage} of {totalPages} • Showing {startIndex + 1}-{Math.min(endIndex, householdProducts.length)} of {householdProducts.length} products
         </div>
       </section>
       <Footer />
@@ -210,4 +210,4 @@ function Fashion() {
   );
 }
 
-export default Fashion; 
+export default HouseholdGoods; 

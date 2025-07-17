@@ -45,7 +45,7 @@ function Home() {
     };
   }, []);
 
-  // Handler for Shop Now buttons
+  // Handler for Mua ngay buttons
   const handleShopNow = (target) => {
     setAnimateOut(true);
     setTimeout(() => {
@@ -73,7 +73,7 @@ function Home() {
           </span>
         </div>
         
-        {/* Fashion & Accessories Banner */}
+        {/* Thời trang Banner */}
         <div className="flex-1 relative flex items-end justify-center overflow-hidden group bg-black">
           <video
             ref={fashionVideoRef}
@@ -84,16 +84,22 @@ function Home() {
             loop
             playsInline
             preload="none"
-            onMouseEnter={() => fashionVideoRef.current && fashionVideoRef.current.play()}
-            onMouseLeave={() => fashionVideoRef.current && fashionVideoRef.current.pause()}
+            onMouseEnter={() => {
+              if (fashionVideoRef.current) {
+                fashionVideoRef.current.play();
+              }
+              if (beautyVideoRef.current) {
+                beautyVideoRef.current.pause();
+              }
+            }}
           />
           <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
           <div className={`absolute bottom-0 left-0 w-full z-20 text-white text-center p-8 pointer-events-auto transition-all duration-500 ${animateOut ? 'opacity-0 translate-y-16' : 'opacity-100 translate-y-0'}`}>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-2">Fashion & Accessories</h2>
-            <button className="mt-2 px-8 py-2 bg-black/60 text-white rounded-full shadow-lg transition hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" onClick={() => handleShopNow('fashion')}>Shop now</button>
+            <h2 className="text-2xl md:text-3xl font-semibold">Thời trang</h2>
+            <button className="mt-2 px-8 py-2 text-white underline underline-offset-4 hover:no-underline hover:scale-110 hover:tracking-wider transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" onClick={() => handleShopNow('fashion')}>Mua ngay</button>
           </div>
         </div>
-        {/* Fragrance & Beauty Banner */}
+        {/* Đồ gia dụng Banner */}
         <div className="flex-1 relative flex items-end justify-center overflow-hidden group bg-black">
           <video
             ref={beautyVideoRef}
@@ -104,13 +110,19 @@ function Home() {
             loop
             playsInline
             preload="none"
-            onMouseEnter={() => beautyVideoRef.current && beautyVideoRef.current.play()}
-            onMouseLeave={() => beautyVideoRef.current && beautyVideoRef.current.pause()}
+            onMouseEnter={() => {
+              if (beautyVideoRef.current) {
+                beautyVideoRef.current.play();
+              }
+              if (fashionVideoRef.current) {
+                fashionVideoRef.current.pause();
+              }
+            }}
           />
           <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
           <div className={`absolute bottom-0 left-0 w-full z-20 text-white text-center p-8 pointer-events-auto transition-all duration-500 ${animateOut ? 'opacity-0 translate-y-16' : 'opacity-100 translate-y-0'}`}>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-2">Fragrance & Beauty</h2>
-            <button className="mt-2 px-8 py-2 bg-black/60 text-white rounded-full shadow-lg transition hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" onClick={() => handleShopNow('fragrance')}>Shop now</button>
+            <h2 className="text-2xl md:text-3xl font-semibold">Đồ gia dụng</h2>
+            <button className="mt-2 px-8 py-2 text-white underline underline-offset-4 hover:no-underline hover:scale-110 hover:tracking-wider transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" onClick={() => handleShopNow('household-goods')}>Mua ngay</button>
           </div>
         </div>
       </section>

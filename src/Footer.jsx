@@ -1,111 +1,137 @@
-import React from 'react';
+import React from "react";
+import {
+  FaFacebook,
+  FaTiktok,
+  FaBuilding,
+  FaPhone,
+  FaEnvelope,
+  FaStore,
+} from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="bg-white text-black border-t border-gray-200 pt-10 pb-4 px-4 md:px-12">
-    <div className="max-w-7xl mx-auto">
+  <footer className="bg-white text-black pt-10 pb-4 px-4 md:px-12">
+    <div className="w-full">
+      {/* Full width border line */}
+      <div className="w-full border-t border-gray-200 mb-10"></div>
       {/* Top Section */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 pb-8 border-b border-gray-200">
+      {/* <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 pb-8 border-b border-gray-200">
         <div className="flex-1">
-          <h2 className="text-2xl font-bold mb-2">MeiT lắng nghe bạn!</h2>
-          <p className="mb-4 max-w-lg">Chúng tôi luôn trân trọng và mong đợi nhận được mọi ý kiến đóng góp từ khách hàng để có thể nâng cấp trải nghiệm dịch vụ và sản phẩm tốt hơn nữa.</p>
-          <button className="bg-black text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-800 transition">ĐÓNG GÓP Ý KIẾN →</button>
+          <h2 className="text-4xl font-bold mb-4 text-gray-800">Slogan</h2>
         </div>
-        <div className="flex flex-col gap-4 md:items-end">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">📞</span>
-            <span className="font-semibold">Hotline</span>
-            <span className="ml-2">1900.272737 - 028.7777.2737</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">✉️</span>
-            <span className="font-semibold">Email</span>
-            <span className="ml-2">Cool@MeiT.me</span>
-          </div>
-          <div className="flex gap-3 mt-2 text-2xl">
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Zalo">💬</a>
-            <a href="#" aria-label="TikTok">🎵</a>
-            <a href="#" aria-label="Instagram">📸</a>
-            <a href="#" aria-label="YouTube">▶️</a>
+        <div className="flex items-center">
+          <div className="text-4xl font-bold text-gray-800">
+            <span className="text-6xl">MeiT With Logo</span>
           </div>
         </div>
-      </div>
-      {/* Middle Section: Links */}
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-6 py-8 text-sm">
-        <div>
-          <div className="font-bold mb-2">COOLCLUB</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Tài khoản CoolClub</a></li>
-            <li><a href="#" className="hover:underline">Đăng kí thành viên</a></li>
-            <li><a href="#" className="hover:underline">Ưu đãi & Đặc quyền</a></li>
-          </ul>
-          <div className="font-bold mt-4 mb-2">TÀI LIỆU - TUYỂN DỤNG</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Tuyển dụng</a></li>
-            <li><a href="#" className="hover:underline">Đăng ký bản quyền</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-bold mb-2">CHÍNH SÁCH</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Chính sách đổi trả 60 ngày</a></li>
-            <li><a href="#" className="hover:underline">Chính sách khuyến mãi</a></li>
-            <li><a href="#" className="hover:underline">Chính sách bảo mật</a></li>
-            <li><a href="#" className="hover:underline">Chính sách giao hàng</a></li>
-          </ul>
-          <div className="font-bold mt-4 mb-2">MeiT.ME</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Lịch sử thay đổi website</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-bold mb-2">CHĂM SÓC KHÁCH HÀNG</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Trải nghiệm mua sắm 100% hài lòng</a></li>
-            <li><a href="#" className="hover:underline">Hỏi đáp - FAQs</a></li>
-          </ul>
-          <div className="font-bold mt-4 mb-2">KIẾN THỨC MẶC ĐẸP</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Hướng dẫn chọn size</a></li>
-            <li><a href="#" className="hover:underline">Blog</a></li>
+      </div> */}
+
+      {/* Bottom Section: Four Columns */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
+        {/* Column 1: Contact Information */}
+        <div className="pr-4 md:pr-8">
+          <h3 className="font-bold text-lg mb-4 text-gray-800">
+            Thông tin liên hệ
+          </h3>
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li className="flex items-start gap-2">
+              <FaBuilding className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>Công Ty TNHH MEITVN</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaBuilding className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>Số ĐKKD: 0109961467 Sở Kế hoạch và Đầu tư TP Hà Nội</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaBuilding className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>Số 145 Nguyễn Văn Cừ, Bồ Đề, Hà Nội</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaPhone className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>036 771 0579</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaEnvelope className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>marketing.meit@gmail.com</span>
+            </li>
           </ul>
         </div>
-        <div>
-          <div className="font-bold mb-2">VỀ MeiT</div>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline">Quy tắc ứng xử của MeiT</a></li>
-            <li><a href="#" className="hover:underline">MeiT 101</a></li>
-            <li><a href="#" className="hover:underline">DVKH xuất sắc</a></li>
-            <li><a href="#" className="hover:underline">Câu chuyện về MeiT</a></li>
-            <li><a href="#" className="hover:underline">Nhà máy</a></li>
-            <li><a href="#" className="hover:underline">Care & Share</a></li>
-            <li><a href="#" className="hover:underline">Cam kết bền vững</a></li>
+
+        {/* Column 2: Store System */}
+        <div className="px-4 md:px-4">
+          <h3 className="font-bold text-lg mb-4 text-gray-800">
+            Hệ thống cửa hàng
+          </h3>
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li className="flex items-start gap-2">
+              <FaStore className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>Cửa hàng 1</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaStore className="text-gray-500 mt-0.5 flex-shrink-0" />
+              <span>Cửa hàng 2</span>
+            </li>
           </ul>
         </div>
-        <div className="md:col-span-2">
-          <div className="font-bold mb-2">ĐỊA CHỈ LIÊN HỆ</div>
-          <ul className="space-y-1">
-            <li><span className="font-semibold">Văn phòng Hà Nội:</span> Tầng 3-4, Tòa nhà BMM, Km2, Đường Phùng Hưng, Phường Hà Đông, Thành phố Hà Nội, Việt Nam</li>
-            <li><span className="font-semibold">Trung tâm vận hành Hà Nội:</span> Lô C8, KCN Lại Yên, Xã Lại Yên, Huyện Hoài Đức, Thành phố Hà Nội</li>
-            <li><span className="font-semibold">Văn phòng và Trung tâm vận hành TP.HCM:</span> Lô C3, đường D2, KCN Cát Lái, Thạnh Mỹ Lợi, TP. Thủ Đức, TP. Hồ Chí Minh</li>
-            <li><span className="font-semibold">Trung tâm R&D:</span> T6-01, The Manhattan Vinhomes Grand Park, Long Bình, TP. Thủ Đức</li>
+
+        {/* Column 3: Customer Care */}
+        <div className="px-4 md:px-4">
+          <h3 className="font-bold text-lg mb-4 text-gray-800">
+            Chăm sóc khách hàng
+          </h3>
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li>
+              <a href="#" className="hover:underline">
+                Câu hỏi thường gặp (FAQ)
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Chính sách thanh toán
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Chính sách đổi trả, kiểm hàng
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Chính sách bảo hành
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Chính sách bảo mật
+              </a>
+            </li>
           </ul>
         </div>
-      </div>
-      {/* Bottom Section */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between border-t border-gray-200 pt-4 mt-4 text-xs text-gray-600">
-        <div className="mb-2 md:mb-0">© CÔNG TY TNHH FASTECH ASIA<br />Mã số doanh nghiệp: 0108617038. Giấy chứng nhận đăng ký doanh nghiệp do Sở Kế hoạch và Đầu tư TP Hà Nội cấp lần đầu ngày 20/02/2019.</div>
-        <div className="flex gap-2 flex-wrap items-center">
-          {/* Placeholder certification icons */}
-          <span className="bg-gray-200 rounded px-2 py-1">NCSC</span>
-          <span className="bg-gray-200 rounded px-2 py-1">CO BAN</span>
-          <span className="bg-gray-200 rounded px-2 py-1">DMCA</span>
-          <span className="bg-gray-200 rounded px-2 py-1">KYC</span>
-          <span className="bg-gray-200 rounded px-2 py-1">ĐÃ THÔNG BÁO</span>
+
+        {/* Column 4: Social media */}
+        <div className="pl-4 md:pl-8">
+          <h3 className="font-bold text-lg mb-4 text-gray-800">
+            Theo dõi MeiT
+          </h3>
+          <div className="flex gap-4 text-sm text-gray-600">
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              <FaFacebook className="w-8 h-8" />
+            </a>
+            <a
+              href="#"
+              aria-label="TikTok"
+              className="text-gray-600 hover:text-black transition-colors"
+            >
+              <FaTiktok className="w-8 h-8" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </footer>
 );
 
-export default Footer; 
+export default Footer;
