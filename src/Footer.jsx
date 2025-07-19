@@ -57,7 +57,7 @@ const Footer = () => (
         </div>
 
         {/* Column 2: Store System */}
-        <div className="px-4 md:px-4">
+        <div className="px-0 md:px-4">
           <h3 className="font-bold text-lg mb-4 text-gray-800">
             Hệ thống cửa hàng
           </h3>
@@ -74,7 +74,7 @@ const Footer = () => (
         </div>
 
         {/* Column 3: Customer Care */}
-        <div className="px-4 md:px-4">
+        <div className="px-0 md:px-4">
           <h3 className="font-bold text-lg mb-4 text-gray-800">
             Chăm sóc khách hàng
           </h3>
@@ -108,7 +108,7 @@ const Footer = () => (
         </div>
 
         {/* Column 4: Social media */}
-        <div className="pl-4 md:pl-8">
+        <div className="px-0 md:px-4">
           <h3 className="font-bold text-lg mb-4 text-gray-800">
             Theo dõi MeiT
           </h3>

@@ -2,72 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
-// Generate 100 household products
-const generateHouseholdProducts = () => {
-  const products = [];
-  const brands = ['MEIT HOME', 'LUXURY KITCHEN', 'PREMIUM LIVING', 'SMART HOME', 'ECO FRIENDLY'];
-  const categories = ['Bộ nồi', 'Máy xay', 'Bộ bát đĩa', 'Tủ lạnh', 'Máy giặt', 'Lò vi sóng', 'Bình nước', 'Ghế sofa', 'Bàn ăn', 'Tủ quần áo'];
-  const materials = ['Inox cao cấp', 'Sứ cao cấp', 'Gỗ tự nhiên', 'Thép không gỉ', 'Nhựa cao cấp', 'Thủy tinh', 'Gốm sứ', 'Kim loại'];
-  
-  // Household product images
-  const householdImages = [
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop'
-  ];
-  
-  // Hover images (completely different images for better effect)
-  const householdHoverImages = [
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop'
-  ];
-  
-  for (let i = 1; i <= 100; i++) {
-    const brand = brands[Math.floor(Math.random() * brands.length)];
-    const category = categories[Math.floor(Math.random() * categories.length)];
-    const material = materials[Math.floor(Math.random() * materials.length)];
-    const price = Math.floor(Math.random() * 10000000) + 500000; // 500K to 10M VND
-    
-    // Select random images for this product
-    const imageIndex = Math.floor(Math.random() * householdImages.length);
-    
-    products.push({
-      id: i,
-      name: `${category} ${material}`,
-      price: `${price.toLocaleString('vi-VN')}₫`,
-      image: householdImages[imageIndex],
-      imageHover: householdHoverImages[imageIndex],
-      brand: brand,
-      preorder: Math.random() > 0.85, // 15% chance of preorder
-    });
-  }
-  
-  return products;
-};
-
-const householdProducts = generateHouseholdProducts();
+import { householdProducts } from './productData';
 
 function HouseholdGoods() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [hoveredProduct, setHoveredProduct] = useState(null);
-  const itemsPerPage = 20;
+  const itemsPerPage = 21;
   const totalPages = Math.ceil(householdProducts.length / itemsPerPage);
 
   // Calculate current products to display
@@ -113,16 +54,16 @@ function HouseholdGoods() {
   return (
     <>
       <Navbar />
-      <section className="w-full py-16 px-4 mt-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="w-full py-16 px-3 sm:px-6 sm:px-[12px] md:px-[24px] lg:px-[45px] mt-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {currentProducts.map((product) => (
             <div 
               key={product.id} 
-              className="flex flex-col items-center bg-white p-6 transition cursor-pointer hover:bg-gray-50"
+              className="flex flex-col items-center bg-white p-0 transition cursor-pointer hover:bg-gray-50"
               onClick={() => navigate(`/household-goods/${product.id}`)}
             >
               <div 
-                className="w-full aspect-[3/4] bg-gray-100 flex items-center justify-center mb-4 overflow-hidden rounded relative group"
+                className="w-full aspect-[3/4] bg-gray-100 flex items-center justify-center mb-4 overflow-hidden relative group"
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
@@ -151,8 +92,8 @@ function HouseholdGoods() {
               </div>
               <div className="text-center">
                 <div className="uppercase text-xs text-gray-500 tracking-widest mb-1">{product.brand}</div>
-                <div className="font-semibold text-lg mb-1">{product.name}</div>
-                <div className="text-gray-700 mb-2">{product.price}</div>
+                <div className="text-lg mb-1">{product.name}</div>
+                <div className="text-gray-500 mb-2">{product.price}</div>
                 {product.preorder && <span className="text-xs text-orange-500 font-bold">PREORDER</span>}
               </div>
             </div>

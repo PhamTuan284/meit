@@ -5,6 +5,8 @@ import Home from './Home';
 import Fashion from './Fashion';
 import HouseholdGoods from './HouseholdGoods';
 import ProductDetail from './ProductDetail';
+import Cart from './components/Cart';
+import { CartProvider } from './contexts/CartContext';
 
 // Component for the loading overlay
 function LoadingOverlay() {
@@ -49,26 +51,29 @@ function LoadingOverlay() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white font-serif relative overflow-hidden">
-        <LoadingOverlay />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/fashion" element={<Fashion />} />
-          <Route path="/household-goods" element={<HouseholdGoods />} />
-          <Route path="/fashion/:id" element={<ProductDetail />} />
-          <Route path="/household-goods/:id" element={<ProductDetail />} />
-        </Routes>
-        
-        <style>{`
-          @keyframes rise {
-            0% { height: 0; }
-            100% { height: 100vh; }
-          }
-          .animate-rise {
-            animation: rise 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
-          }
-        `}</style>
-      </div>
+      <CartProvider>
+        <div className="min-h-screen bg-white font-serif relative overflow-hidden">
+          <LoadingOverlay />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/fashion" element={<Fashion />} />
+            <Route path="/household-goods" element={<HouseholdGoods />} />
+            <Route path="/fashion/:id" element={<ProductDetail />} />
+            <Route path="/household-goods/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          
+          <style>{`
+            @keyframes rise {
+              0% { height: 0; }
+              100% { height: 100vh; }
+            }
+            .animate-rise {
+              animation: rise 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
+            }
+          `}</style>
+        </div>
+      </CartProvider>
     </Router>
   );
 }
