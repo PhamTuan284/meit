@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { fashionProducts, householdProducts } from './productData';
-import { useCart } from './contexts/CartContext';
-import Notification from './components/Notification';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import { fashionProducts, householdProducts } from '../data/productData';
+import { useCart } from '../contexts/CartContext';
+import Notification from '../components/ui/Notification';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -37,12 +37,12 @@ function ProductDetail() {
       <>
         <Navbar />
         <div className="w-full py-32 px-4 text-center">
-          <h1 className="text-2xl font-bold mb-4">Product not found {category} {id}</h1>
+          <h1 className="text-2xl font-bold mb-4">Không tìm thấy sản phẩm {category} {id}</h1>
           <button 
             onClick={() => navigate('/')}
             className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition"
           >
-            Back to Home
+            Về trang chủ
           </button>
         </div>
       </>
@@ -53,7 +53,7 @@ function ProductDetail() {
     if (!selectedSize) {
       setNotification({
         show: true,
-        message: 'Please select a size',
+        message: 'Vui lòng chọn kích thước',
         type: 'error'
       });
       return;
@@ -61,7 +61,7 @@ function ProductDetail() {
     addToCart(product, selectedSize, 1);
     setNotification({
       show: true,
-      message: `Added 1 ${product.name} (${selectedSize}) to cart`,
+      message: `Đã thêm 1 ${product.name} (${selectedSize}) vào giỏ hàng`,
       type: 'success'
     });
   };
@@ -123,7 +123,7 @@ function ProductDetail() {
               {/* "New" tag for fashion items */}
               {category === 'fashion' && (
                 <div className="absolute bottom-4 left-4 text-xs text-gray-500">
-                  New
+                  Mới
                 </div>
               )}
             </div>
@@ -136,19 +136,14 @@ function ProductDetail() {
                 <div className="flex items-start justify-between mb-4">
                   <h1 className="text-2xl md:text-3xl font-light leading-tight">{product.name}</h1>
                 </div>
-                
-                {/* Material/Type info for fashion */}
-                {category === 'fashion' && (
-                  <div className="text-sm text-gray-600 mb-6">Black Technical Knit</div>
-                )}
               </div>
 
               {/* Size Selection */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <label className="text-sm font-medium">Select your size</label>
+                  <label className="text-sm font-medium">Kích thước</label>
                   <button className="text-xs text-gray-500 underline hover:text-black">
-                    Size Chart
+                    Hưỡng dẫn chọn size
                   </button>
                 </div>
                 <div className="grid grid-cols-4 gap-2">
@@ -168,14 +163,6 @@ function ProductDetail() {
                 </div>
               </div>
 
-              {/* Stock Status */}
-              {!product.inStock && (
-                <div className="text-red-500 text-sm font-medium">Out of Stock</div>
-              )}
-              {product.preorder && (
-                <div className="text-orange-500 text-sm font-medium">PREORDER</div>
-              )}
-
               {/* Add to Cart Button */}
               <div className="space-y-3">
                 <button
@@ -183,7 +170,7 @@ function ProductDetail() {
                   disabled={!product.inStock}
                   className="w-full py-4 bg-gray-900 text-white font-medium hover:bg-black disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-between px-6"
                 >
-                  <span>{product.inStock ? 'Add to cart' : 'Out of Stock'}</span>
+                  <span>{product.inStock ? 'Thêm vào giỏ' : 'Hết hàng'}</span>
                   <span className="font-semibold">{product.price}</span>
                 </button>
               </div>
@@ -191,17 +178,14 @@ function ProductDetail() {
               {/* Information Tabs */}
               <div className="border-t border-gray-200 pt-6">
                 <div className="flex space-x-8 text-sm">
-                  <button className="text-black border-b-2 border-black pb-2 font-medium">Description</button>
-                  <button className="text-gray-500 hover:text-black pb-2">Size & Fit</button>
-                  <button className="text-gray-500 hover:text-black pb-2">Contact & In-Store</button>
-                  <button className="text-gray-500 hover:text-black pb-2">Delivery & Returns</button>
+                  <button className="text-black border-b-2 border-black pb-2 font-medium">Mô tả sản phẩm</button>
                 </div>
                 
                 {/* Description Content */}
                 <div className="mt-6 text-sm text-gray-600 leading-relaxed">
                   <p>{product.description}</p>
                   <button className="text-black underline mt-2 hover:no-underline">
-                    See more
+                    Xem thêm
                   </button>
                 </div>
               </div>

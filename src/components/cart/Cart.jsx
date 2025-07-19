@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import { useCart } from '../../contexts/CartContext';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
+import CheckoutForm from './CheckoutForm';
+import Notification from '../ui/Notification';
 import { HiOutlineTrash, HiOutlineMinus, HiOutlinePlus } from 'react-icons/hi';
 
 function Cart() {
   const navigate = useNavigate();
   const { items, totalItems, totalPrice, removeFromCart, updateQuantity, clearCart, debugCart } = useCart();
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [notification, setNotification] = useState({ show: false, message: '', type: 'success' });
 
   // Debug: Log cart state on component mount
   useEffect(() => {
@@ -17,6 +21,42 @@ function Cart() {
     }
   }, [items.length, debugCart]);
 
+  const handleCheckout = (formData) => {
+    // Prepare order data
+    const orderData = {
+      customerInfo: {
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        address: formData.address,
+        note: formData.note
+      },
+      paymentMethod: formData.paymentMethod,
+      items: items,
+      totalPrice: totalPrice,
+      totalWithTax: totalPrice * 1.1,
+      orderDate: new Date().toISOString()
+    };
+
+    // Send order to server (replace with your actual API endpoint)
+    console.log('Sending order to server:', orderData);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setNotification({
+        show: true,
+        message: 'Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.',
+        type: 'success'
+      });
+      setShowCheckout(false);
+      clearCart();
+    }, 1000);
+  };
+
+  const closeNotification = () => {
+    setNotification({ show: false, message: '', type: 'success' });
+  };
+
   if (items.length === 0) {
     return (
       <>
@@ -24,13 +64,13 @@ function Cart() {
         <div className="w-full py-32 px-4 text-center">
           <div className="max-w-md mx-auto">
             <div className="text-6xl mb-6">🛒</div>
-            <h1 className="text-2xl font-bold mb-4">Your cart is empty</h1>
-            <p className="text-gray-600 mb-8">Looks like you haven't added any items to your cart yet.</p>
+            <h1 className="text-2xl font-bold mb-4">Giỏ hàng trống</h1>
+            <p className="text-gray-600 mb-8">Chưa có sản phẩm nào trong giỏ hàng</p>
             <button 
-              onClick={() => navigate('/fashion')}
+              onClick={() => navigate('/')}
               className="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
             >
-              Start Shopping
+              Bắt đầu mua sắm
             </button>
           </div>
         </div>
@@ -42,16 +82,29 @@ function Cart() {
   return (
     <>
       <Navbar />
+      <Notification 
+        message={notification.message}
+        isVisible={notification.show}
+        onClose={closeNotification}
+        type={notification.type}
+      />
+      {showCheckout && (
+        <CheckoutForm
+          onSubmit={handleCheckout}
+          onCancel={() => setShowCheckout(false)}
+          totalPrice={totalPrice}
+        />
+      )}
       <section className="w-full py-8 px-3 sm:px-6 md:px-[45px] mt-16">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-2xl md:text-3xl font-light">Shopping Cart ({totalItems} items)</h1>
+            <h1 className="text-2xl md:text-3xl font-light">Giỏ hàng</h1>
             <button 
               onClick={clearCart}
               className="text-sm text-gray-500 hover:text-black underline"
             >
-              Clear all
+              Xóa tất cả
             </button>
           </div>
 
@@ -75,7 +128,7 @@ function Cart() {
                       <div>
                         <h3 className="font-medium text-gray-900 truncate">{item.name}</h3>
                         <p className="text-sm text-gray-500">{item.brand}</p>
-                        <p className="text-sm text-gray-500">Size: {item.size}</p>
+                        <p className="text-sm text-gray-500">Kích thước: {item.size}</p>
                       </div>
                       <p className="font-medium text-gray-900">{item.price}</p>
                     </div>
@@ -113,38 +166,39 @@ function Cart() {
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <div className="bg-gray-50 p-6 sticky top-24">
-                <h2 className="text-lg font-medium mb-4">Order Summary</h2>
-                
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span>Subtotal ({totalItems} items)</span>
-                    <span>${totalPrice.toFixed(2)}</span>
+                    <span>{totalItems} sản phẩm</span>
+                    <span>{totalPrice.toFixed(2)} VND</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Shipping</span>
-                    <span>Free</span>
+                    <span>Phí vận chuyển</span>
+                    <span>Miễn phí</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Tax</span>
-                    <span>${(totalPrice * 0.1).toFixed(2)}</span>
+                    <span>Thuế</span>
+                    <span>{(totalPrice * 0.1).toFixed(2)} VND</span>
                   </div>
                   <div className="border-t border-gray-300 pt-3">
                     <div className="flex justify-between font-medium">
-                      <span>Total</span>
-                      <span>${(totalPrice * 1.1).toFixed(2)}</span>
+                      <span>Thành tiền</span>
+                      <span>{(totalPrice * 1.1).toFixed(2)} VND</span>
                     </div>
                   </div>
                 </div>
 
-                <button className="w-full py-4 bg-black text-white font-medium hover:bg-gray-800 transition-colors mb-4">
-                  Proceed to Checkout
+                <button 
+                  onClick={() => setShowCheckout(true)}
+                  className="w-full py-4 bg-black text-white font-medium hover:bg-gray-800 transition-colors mb-4"
+                >
+                  Đặt hàng
                 </button>
                 
                 <button 
-                  onClick={() => navigate('/fashion')}
+                  onClick={() => navigate('/')}
                   className="w-full py-3 border border-black text-black font-medium hover:bg-black hover:text-white transition-colors"
                 >
-                  Continue Shopping
+                  Tiếp tục mua hàng
                 </button>
               </div>
             </div>

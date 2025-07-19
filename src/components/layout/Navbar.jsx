@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlineUser, HiOutlineShoppingBag } from 'react-icons/hi';
-import { useCart } from './contexts/CartContext';
+import { useCart } from '../../contexts/CartContext';
 
 function Navbar() {
   const navigate = useNavigate();

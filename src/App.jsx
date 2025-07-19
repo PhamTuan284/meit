@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import './index.css';
-import Home from './Home';
-import Fashion from './Fashion';
-import HouseholdGoods from './HouseholdGoods';
-import ProductDetail from './ProductDetail';
-import Cart from './components/Cart';
+import './styles/index.css';
+import './styles/App.css';
+import Home from './pages/Home';
+import Fashion from './pages/Fashion';
+import HouseholdGoods from './pages/HouseholdGoods';
+import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
 import { CartProvider } from './contexts/CartContext';
 
 // Component for the loading overlay
@@ -52,7 +53,7 @@ function App() {
   return (
     <Router>
       <CartProvider>
-        <div className="min-h-screen bg-white font-serif relative overflow-hidden">
+        <div className="min-h-screen bg-white relative overflow-hidden">
           <LoadingOverlay />
           <Routes>
             <Route path="/" element={<Home />} />

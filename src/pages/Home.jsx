@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from './Footer';
+import Footer from '../components/layout/Footer';
 
 function Home() {
   const [animateOut, setAnimateOut] = useState(false);

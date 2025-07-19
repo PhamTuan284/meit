@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { householdProducts } from './productData';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import { householdProducts } from '../data/productData';
 
 function HouseholdGoods() {
   const navigate = useNavigate();
@@ -94,7 +94,7 @@ function HouseholdGoods() {
                 <div className="uppercase text-xs text-gray-500 tracking-widest mb-1">{product.brand}</div>
                 <div className="text-lg mb-1">{product.name}</div>
                 <div className="text-gray-500 mb-2">{product.price}</div>
-                {product.preorder && <span className="text-xs text-orange-500 font-bold">PREORDER</span>}
+
               </div>
             </div>
           ))}

@@ -78,7 +78,6 @@ export const generateFashionProducts = () => {
       imageHover: allImages[1], // Hover image
       images: allImages, // All images for gallery
       brand: brand,
-      preorder: seededRandom(i * 800) > 0.8, // 20% chance of preorder
       description: `Premium ${category.toLowerCase()} in ${color.toLowerCase()} color. Made with high-quality materials for ultimate comfort and style. Perfect for everyday wear and special occasions.`,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       inStock: seededRandom(i * 900) > 0.1, // 90% chance of being in stock
@@ -160,7 +159,6 @@ export const generateHouseholdProducts = () => {
       imageHover: allImages[1], // Hover image
       images: allImages, // All images for gallery
       brand: brand,
-      preorder: seededRandom(i * 800) > 0.85, // 15% chance of preorder
       description: `Chất lượng cao ${category.toLowerCase()} làm từ ${material.toLowerCase()}. Thiết kế hiện đại, bền bỉ và an toàn cho gia đình.`,
       sizes: ['Nhỏ', 'Vừa', 'Lớn', 'Đặc biệt'],
       inStock: seededRandom(i * 900) > 0.1, // 90% chance of being in stock
